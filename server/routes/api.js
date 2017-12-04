@@ -13,8 +13,6 @@ indico.apiKey = config.indico.apiKey
 
 require('../config/passport')(passport); // pass passport for configuration
 
-//req.body ======= POST!
-//req.query ====== GET!
 
 /* GET api listing. */
 router.get('/', (req, res) => {
@@ -35,9 +33,7 @@ router.get('/me', passport.authenticate('jwt', {session:false}),(req, res) => {
 router.get('/search', passport.authenticate('jwt', {session:false}),(req, res) => {
   T.get('users/lookup', { screen_name: req.query.searchBar })
   .then(function(result) {
-      // console.log(result);
       res.json(result.data);
-      // res.send(result.data)
   })
   .catch(function (err){
     console.log("FOUND ERROR: " + err.message)
@@ -47,8 +43,6 @@ router.get('/search', passport.authenticate('jwt', {session:false}),(req, res) =
 router.get('/tweets', passport.authenticate('jwt', {session:false}),(req,res) => {
   T.get('/statuses/user_timeline', {screen_name: req.query.screen_name, count: 50, tweet_mode: 'extended'})
   .then(function(result){
-    // console.log(result.data[0].text)
-    // console.log('-------------'+result.data[0].retweeted_status.full_text);
     res.json(result.data)
   })
   .catch(function (err){
@@ -57,8 +51,6 @@ router.get('/tweets', passport.authenticate('jwt', {session:false}),(req,res) =>
 })
 
 router.get('/sentiment', passport.authenticate('jwt', {session:false}),(req,res) => {
-  // console.log(req.query.tweet);
-  // let query = req.query.tweet.text;
   indico.emotion(req.query.tweet,{top_n: 1})
   .then(function(result){
     res.json(result);
