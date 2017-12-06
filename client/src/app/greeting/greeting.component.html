@@ -36,7 +36,7 @@
 
                   <div class="alert alert-danger" *ngIf="!rForm.get('email').valid && rForm.get('email').dirty && emailFocus == false">{{ emailError }}</div>
                   <div class="alert alert-danger" *ngIf="!rForm.get('password').valid && rForm.get('password').dirty && pwFocus == false">{{passwordError}}</div>
-                  <div class="alert alert-danger" *ngIf="!rForm.get('confirmPassword').errors?.MatchPassword && rForm.controls['confirmPassword'].dirty && pwFocus == false">Passwords do not match</div>
+                  <div class="alert alert-danger" *ngIf="rForm.get('confirmPassword').errors?.MatchPassword && rForm.controls['confirmPassword'].dirty && pwFocus == false">Passwords do not match</div>
                   <div class="alert alert-danger" *ngIf="message && !message.valid"> {{message.message}} </div>
                   <div class="alert alert-success" *ngIf="message && message.valid"> {{message.message}} </div>
                 </div>
