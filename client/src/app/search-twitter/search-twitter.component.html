@@ -4,7 +4,8 @@
   <br />
   <br />
   <div class="jumbotron">
-    <p class="lead">Get started by searching for a twitter user below!</p>
+
+    <h2>Get started by searching for a twitter user below!</h2>
   </div>
 </div>
 
@@ -46,29 +47,32 @@
         <div *ngIf="tweetsList != null">
           <div *ngFor="let i of [0,1,2,3,4]">
             <ul class="list-group">
-              <a data-toggle="collapse" href="#{{tweetsList[i].id}}">
-                <li class="list-group-item">
-                  <div *ngIf="tweetsList[i].hasOwnProperty('retweeted_status');else own_tweet">
-                    RT &nbsp;@{{tweetsList[i].retweeted_status.user.screen_name}}: &nbsp; {{tweetsList[i].retweeted_status.full_text}}
+              <div *ngIf="tweetsList[i]">
+                <a data-toggle="collapse" href="#{{tweetsList[i].id}}">
+                  <li class="list-group-item">
+                    <div *ngIf="tweetsList[i].hasOwnProperty('retweeted_status');else own_tweet">
+                      RT &nbsp;@{{tweetsList[i].retweeted_status.user.screen_name}}: &nbsp; {{tweetsList[i].retweeted_status.full_text}}
+                    </div>
+                    <ng-template #own_tweet> {{tweetsList[i].full_text}}</ng-template>
+                  </li>
+                </a>
+              
+                <div id="{{tweetsList[i].id}}" class="collapse">
+                  <div *ngIf="sentimentsList[i] == 'anger'">
+                    <div class="jumbotron text-center" style="background-color: #FF1919;color: white;"><h3 class="display-3">This tweet was most likely written in {{sentimentsList[i]}}.</h3></div>
                   </div>
-                  <ng-template #own_tweet> {{tweetsList[i].full_text}}</ng-template>
-                </li>
-              </a>
-              <div id="{{tweetsList[i].id}}" class="collapse">
-                <div *ngIf="sentimentsList[i] == 'anger'">
-                  <div class="jumbotron text-center" style="background-color: #FF1919;color: white;"><h3 class="display-3">This tweet was most likely written in {{sentimentsList[i]}}.</h3></div>
-                </div>
-                <div *ngIf="sentimentsList[i] == 'joy'">
-                  <div class="jumbotron text-center" style="background-color: #FFD032;color: white;"><h3 class="display-3">This tweet was most likely written in {{sentimentsList[i]}}.</h3></div>
-                </div>
-                <div *ngIf="sentimentsList[i] == 'fear'">
-                  <div class="jumbotron text-center" style="background-color: #C96A19;color: white;"><h3 class="display-3">This tweet was most likely written in {{sentimentsList[i]}}.</h3></div>
-                </div>
-                <div *ngIf="sentimentsList[i] == 'sadness'">
-                  <div class="jumbotron text-center" style="background-color: #250396; color:white;"><h3 class="display-3">This tweet was most likely written in {{sentimentsList[i]}}.</h3></div>
-                </div>
-                <div *ngIf="sentimentsList[i] == 'surprise'">
-                  <div class="jumbotron text-center" style="background-color: #035C07; color: white;"><h3 class="display-3">This tweet was most likely written in {{sentimentsList[i]}}.</h3></div>
+                  <div *ngIf="sentimentsList[i] == 'joy'">
+                    <div class="jumbotron text-center" style="background-color: #FFD032;color: white;"><h3 class="display-3">This tweet was most likely written in {{sentimentsList[i]}}.</h3></div>
+                  </div>
+                  <div *ngIf="sentimentsList[i] == 'fear'">
+                    <div class="jumbotron text-center" style="background-color: #C96A19;color: white;"><h3 class="display-3">This tweet was most likely written in {{sentimentsList[i]}}.</h3></div>
+                  </div>
+                  <div *ngIf="sentimentsList[i] == 'sadness'">
+                    <div class="jumbotron text-center" style="background-color: #250396; color:white;"><h3 class="display-3">This tweet was most likely written in {{sentimentsList[i]}}.</h3></div>
+                  </div>
+                  <div *ngIf="sentimentsList[i] == 'surprise'">
+                    <div class="jumbotron text-center" style="background-color: #035C07; color: white;"><h3 class="display-3">This tweet was most likely written in {{sentimentsList[i]}}.</h3></div>
+                  </div>
                 </div>
               </div>
             </ul>
