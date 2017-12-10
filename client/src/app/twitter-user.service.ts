@@ -25,15 +25,7 @@ export class TwitterUserService {
     return this.http.get<twitterUsers>('/api/search', {
       params: params
     });
-    // .subscribe(
-    // data => {
-    //   this.usersList = data;
-    //   // console.log("first relevant search:" + data[0].id);
-    //   // console.log(data[0].screen_name);
-    //   // console.log("second relevant search:" + data[1].id);
-    //   // console.log(data[1].screen_name);
-    // });
-    // return this.usersList;
+
   }
 
   getTweets(item){

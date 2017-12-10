@@ -26,12 +26,10 @@ export class SearchTwitterComponent{
     this.sentimentsList = [];
 
     this.twitterService.getTwitterHandle(form).subscribe(data=> {
-      // console.log(data);
       this.twitterHandle = data[0];
     });
     this.item = form.value.searchBar;
     this.open(this.item);
-    // console.log('submitted');
   }
 
 
@@ -39,7 +37,6 @@ export class SearchTwitterComponent{
 
     this.twitterService.getTweets(item).subscribe(data => {
       this.tweetsList = data;
-      // console.log(this.tweetsList);
       var bestGuess;
       this.sentimentsList = [];
       for(let tweet of this.tweetsList){
@@ -51,7 +48,6 @@ export class SearchTwitterComponent{
             var keys = Object.keys(temp);
             for (var i = 0; i < keys.length; i++){
               var key = keys[i];
-              console.log(key, temp[key]);
               if(maxVal < temp[key]){
                   maxVal = temp[key];
                   bestGuess = key;
@@ -103,7 +99,6 @@ export class SearchTwitterComponent{
   }
 
   displayChart(){
-      // console.log('displaying chart');
       this.data = {
       labels: ['anger','joy','fear', 'sadness', 'surprise'],
       datasets: [
@@ -137,29 +132,4 @@ export class SearchTwitterComponent{
     else if (max == 4) this.emotion = 'Wow! Surprising tweets everywhere!';
   }
 
-
-  // // Move all of this into Service ?
-  // usersList: any = null;
-  // constructor(public http : HttpClient){}
-
-
-  // onSubmit(form: NgForm){
-  //   interface twitterUsers {
-  //     data: Array<any>
-  //   }
-  //   let params = new HttpParams();
-  //   params = params.append('searchBar', form.value.searchBar);
-  //   this.http.get<twitterUsers>('http://localhost:3000/api/search', {
-  //     params: params
-  //   }).subscribe(
-  //   data => {
-  //     this.usersList = data;
-  //     console.log("first relevant search:" + data[0].id);
-  //     console.log(data[0].screen_name);
-  //     console.log("second relevant search:" + data[1].id);
-  //     console.log(data[1].screen_name);
-  //   });
-  //
-  //   console.log(searchedUser);
-  // }
 }

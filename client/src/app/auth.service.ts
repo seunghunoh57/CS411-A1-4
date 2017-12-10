@@ -21,7 +21,6 @@ export class AuthService {
   }
 
   logout() {
-    console.log('trying to remove jwt cookie');
     localStorage.removeItem('jwt');
     localStorage.clear();
     this.router.navigate(['']);

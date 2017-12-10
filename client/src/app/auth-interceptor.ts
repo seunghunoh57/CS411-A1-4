@@ -14,10 +14,8 @@ export class AuthInterceptor implements HttpInterceptor {
     this.auth = this.inj.get(AuthService);
 
     if(!this.auth.getToken()) return next.handle(req);
-    console.log("adding to header");
     // Get the auth header from the service.
     const authHeader = this.auth.getToken();
-    console.log(this.auth.getToken());
     // Clone the request to add the new header.
     const authReq = req.clone({setHeaders: {Authorization: authHeader}});
     // Pass on the cloned request instead of the original request.
