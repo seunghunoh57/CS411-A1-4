@@ -4,7 +4,7 @@ This project is done as part of CS411 semester project. This web application ask
 ---
 #### How to run
 
-The Project is running Angular 5 via Angular CLI 1.5.0 and Node v8.4.0.
+The Project is running Angular 5 via Angular CLI 1.5.0, Node v8.4.0 and MongoDB Community Version 3.4.1.
 
 To install dependencies on client/server:
 - npm install
@@ -13,15 +13,8 @@ To save a new dependency on client/server:
 - npm install ___ --save
 
 Start server by running "node server" in server directory.
-#####MongoDB Instructions
-1. Install MongoDB Community Version 3.4.1
-2. Create directory data/db in Snippet
-3. Create config/config.json in Snippet with correct address:port for mongo
-
-Running MongoDB: run in new terminal window: mongod --dbpath "data/db/"
 
 Obtain the access keys from one of the contributors.
-
 
 ---
 #### Contributors 
