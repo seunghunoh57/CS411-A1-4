@@ -66,7 +66,6 @@ export class GreetingComponent  {
       this.auth.login(form.value).subscribe(
         data => {
             if(data.success==true){
-              console.log(data.success)
               localStorage.setItem('jwt', data.token);
               this.router.navigate(['home']);
             }
