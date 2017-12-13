@@ -3,25 +3,6 @@ This file is created as a reference of the NoSQL schema and for assignment 4/5.
 {
 	username: String,
 	encrypted password: String,
-	unique randomly generated user-id: int,
-	user’s real name: String,
-	social media handles:
-	[
-		{
-			media-type: String
-			username: String
-			pwd:	 String
-		},
-		{
-			media-type: String
-			username: String
-			pwd:	 String
-		}
-	],
+	unique randomly generated user-id: String,
 	creation-date: date,
-	history:
-	{
-		last sentiment felt: String
-		last searched user: String
-	}
 }
